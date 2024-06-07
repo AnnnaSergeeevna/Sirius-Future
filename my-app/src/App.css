@@ -1,0 +1,83 @@
+.App {
+  text-align: center;
+  font: Circe Rounded;
+}
+
+h1 {
+  font-weight: 400;
+  font-stretch: semi-expanded;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 339px;
+  height: 372px;
+  /* gap: 96px; */
+  opacity: 1;
+}
+
+.form-group {
+  width: 100%;
+}
+
+form {
+  width: 100%;
+}
+
+.logomark {
+  display: flex;
+  align-content: center;
+  height: 80px;
+  width: 80px;
+}
+
+.btnPrimary {
+  display: inline;
+  width: 100%;
+  height: 48px;
+  border-radius: 30px;
+  background-color: rgba(141, 127, 199, 1);
+  border-color: rgba(141, 127, 199, 1);
+  color: white;
+  border: none;
+}
+
+.password-group {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 70%;
+  right: 1%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #464646;
+}
+
+.eyeImg {
+  right: 10px;
+  top: 45%;
+}
+
+.form-check-label {
+  display: flex !important;
+}
+
+.btnFrame {
+  display: inline-flex;
+  justify-content: space-between;
+  text-decoration: none;
+  width: 100%;
+}
+
+.btnReg {
+  display: flex;
+  justify-content: center;
+}
