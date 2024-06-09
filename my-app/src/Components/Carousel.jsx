@@ -5,7 +5,7 @@ import { Carousel } from 'react-bootstrap';
 const CarouselComponent = () => {
     return (
         <div className="carouselWrapper">
-            <Carousel>
+            <Carousel indicators={false} controls={false}>
                 <Carousel.Item>
                     <img className="d-block w-100" src={bunnerimg} alt="First slide" />
                 </Carousel.Item>

@@ -26,7 +26,6 @@ const Login = () => {
                         rememberMe: false
                     }}
                     onSubmit={values => {
-                        console.log(values);
                         navigate('/home');
                     }}
                 >
@@ -70,7 +69,7 @@ const Login = () => {
                                 />
                                 <label className="form-check-label" htmlFor="rememberMe">Запомнить меня</label>
                             </div>
-                            <button type="submit" className="btnPrimary">Войти</button>
+                            <button type="submit" className="btnPrimaryLogin">Войти</button>
                         </Form>
                     )}
                 </Formik>

@@ -4,10 +4,10 @@ import CarouselComponent from './Carousel';
 import CountdownBlock from './CountdownBlock';
 import HomeTasks from './HomeTasks.png'
 import report from './report.png'
+import BalanceScrollComponent from './BalanceScrollComponent';
 const Entry = () => {
     return (
-        <div className="pageContainer">
-
+        <div>
             <div className="mainContainer">
                 <div className="headerContainer">
                     <Header />
@@ -21,7 +21,8 @@ const Entry = () => {
                     </div>
                 </div>
                 <div className="bottomRow">
-                    <div className="largeBlock"></div>
+                    <div className="largeBlock"><BalanceScrollComponent />
+                    </div>
                     <div className="extraLargeBlock"></div>
                 </div>
             </div>

@@ -1,17 +1,83 @@
+@font-face {
+  font-family: 'Circe Rounded';
+  src: url('./fonts/CirceRounded-Thin.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Circe Rounded';
+  src: url('./fonts/CirceRounded-ExtraLight.otf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Circe Rounded';
+  src: url('./fonts/CirceRounded-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Circe Rounded';
+  src: url('./fonts/CirceRounded-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Circe Rounded';
+  src: url('./fonts/CirceRounded-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Circe Rounded';
+  src: url('./fonts/CirceRounded-ExtraBold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Circe Rounded';
+  src: url('./fonts/CirceRounded-Alt-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Circe Rounded';
+  src: url('./fonts/CirceRounded-Alt-ExtraBold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+#root {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --deep-blue: rgba(50, 56, 84, 1);
+  --powder: rgba(255, 241, 203, 1);
+  --lily-gray: rgba(121, 116, 127, 1);
+  --lily: rgba(115, 98, 188, 1);
+  --violet2: rgba(141, 127, 199, 1);
+  --violet: rgba(222, 207, 255, 1);
+  --light-violet: rgba(238, 238, 255, 1);
+  --thumb-height: 55%;
+  --thumb-position: 0%;
+}
+
 .App {
   text-align: center;
-  font: Circe Rounded;
+  font: 'Circe Rounded', sans-serif;
 }
-
-a {
-  text-decoration: none;
-}
-
 
 html,
 body {
   height: 100%;
   margin: 0;
+  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,10 +88,17 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 100%;
   width: 100%;
+  box-sizing: border-box;
 }
 
+.main-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
 
 /* SWITCH */
 .langSwitch {
@@ -33,36 +106,39 @@ body {
   justify-content: center;
   align-items: center;
   margin: 10px;
-  margin-top: 110px;
 }
 
 .langButton {
   padding: 10px 20px;
   margin: 0 5px;
-  color: rgba(121, 116, 127, 1);
+  color: var(--lily-gray);
   background-color: white;
   border: none;
   cursor: pointer;
 }
 
 .langButton.active {
-  color: rgba(115, 98, 188, 1);
+  color: var(--lily);
   font-size: 1.5em;
-
 }
 
 h1 {
   font-weight: 400 !important;
-  font-size: calc(1.375rem + 1.4vw) !important;
+  font-size: 36px !important;
   line-height: 35px;
   white-space: nowrap;
-  font-stretch: expanded;
+  font-stretch: semi-expanded;
+}
+
+a {
+  text-decoration: none;
 }
 
 .headerContainer {
   display: flex;
   flex-direction: row;
   width: 100%;
+  height: 68px;
   background-color: #f0f0f0;
   padding: 60px;
   text-align: center;
@@ -70,12 +146,23 @@ h1 {
   margin-bottom: 20px;
 }
 
-.mainContainer {
+.mainContainer,
+.main-container {
   display: flex;
   flex-direction: column;
+  position: absolute;
+  top: 0px;
+  left: 286px;
   width: 100%;
   padding: 20px;
   max-width: 1080px;
+}
+
+.content-container {
+  margin-left: 0px;
+  margin-top: 0px;
+  padding: 20px;
+  width: calc(100% - 236px);
 }
 
 .topRow,
@@ -83,6 +170,7 @@ h1 {
   display: flex;
   justify-content: space-between;
   width: 100%;
+  max-width: none;
   margin-bottom: 20px;
 }
 
@@ -90,13 +178,6 @@ h1 {
   width: 162px;
   height: 248px;
   background-color: #999;
-}
-
-.largeBlock {
-  width: 344px;
-  height: 372px;
-  background-color: #ccc;
-  margin-right: 20px;
 }
 
 .extraLargeBlock {
@@ -107,17 +188,30 @@ h1 {
 
 
 .carouselWrapper {
+  width: 526px !important;
+  height: 248px !important;
+  /* overflow: hidden; */
+  margin: 20px;
+  border-radius: 30px;
+
+}
+
+.carousel-item {
+  width: 526px !important;
+  height: 248px !important;
+}
+
+
+.carousel-item img {
   width: 526px;
-  overflow: hidden;
-}
-
-.carousel-inner {
   height: 248px;
+  object-fit: contain;
 }
 
-.carousel {
-  width: 110%;
-  height: 120%;
+.carousel-indicators,
+.carousel-control-prev,
+.carousel-control-next {
+  display: flex;
 }
 
 .CountdownBlock {
@@ -125,27 +219,41 @@ h1 {
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
-  background: rgba(255, 241, 203, 1);
+  justify-content: space-evenly;
+  width: 344px;
+  background: var(--powder);
   border-radius: 30px;
   font: monospace;
+  margin: 20px 0px 20px 0px;
 }
 
 h4 {
   font-family: monospace;
-  font-size: 20px;
+  font-size: 18px !important;
   font-weight: 400;
   line-height: 20px;
   text-align: center;
 }
 
 .CountdownButton {
-  color: rgba(50, 56, 84, 1);
-  background: rgba(255, 241, 203, 1);
-  border: 1px dashed rgba(50, 56, 84, 1);
+  color: var(--deep-blue);
+  background: var(--powder);
+  border: 1px dashed var(--deep-blue);
   border-radius: 30px;
   width: 220px;
   height: 48px;
+  font-size: large;
+}
+
+.CountdownButton:hover {
+  font-size: x-large;
+}
+
+.CountdownButton:active {
+  background: var(--deep-blue);
+  color: var(--powder);
+  border: 1px dashed var(--powder);
+
 }
 
 .smallBlock {
@@ -155,10 +263,14 @@ h4 {
   align-items: center;
   justify-content: space-between;
   background-color: white;
+  margin: 20px;
 }
 
 .homeTasks {
-  padding-top: 70px;
+  width: 162px;
+  background-color: aquamarine;
+  border: solid 20px aquamarine;
+  border-radius: 15px;
 }
 
 /* ENTRY PAGE */
@@ -168,6 +280,7 @@ h4 {
   flex-direction: column;
   align-content: center;
   align-items: center;
+  justify-content: center;
   flex-wrap: nowrap;
   width: 339px;
   height: 372px;
@@ -201,21 +314,6 @@ form {
   margin-bottom: 32px;
 }
 
-.btnPrimary {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  width: 100%;
-  height: 40px;
-  border-radius: 30px;
-  background-color: rgba(141, 127, 199, 1);
-  border-color: rgba(141, 127, 199, 1);
-  color: white;
-  border: none;
-  text-decoration: none;
-  padding: 0 15px;
-  transition: background-color 0.3s ease;
-}
 
 .password-group {
   position: relative;
@@ -256,6 +354,7 @@ form {
 .btnReg {
   display: flex;
   justify-content: center;
+  margin-bottom: 100px;
 }
 
 /* USER PAGE */
@@ -278,22 +377,6 @@ form {
   margin: 0px 0px 0 0px;
 }
 
-.mainContainer {}
-
-.headContainer {}
-
-.bannersContainer {}
-
-.bannerBlock {}
-
-.upcomingLessonBlock {}
-
-.studyContainer {}
-
-.balanceBlock {}
-
-.sheduleBlock {}
-
 /* NAV MENU */
 
 
@@ -314,13 +397,42 @@ form {
   margin-bottom: 10px;
 }
 
+.btnPrimaryLogin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 40px;
+  border-radius: 30px;
+  background-color: var(--violet2);
+  border: none;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.btnPrimary {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 40px;
+  border-radius: 30px;
+  background-color: var(--violet2);
+  border: none;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
 .navbtnPrimary {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   width: 216px;
   height: 40px;
   border-radius: 0 30px 30px 0;
-  padding: 0 0 0 44px;
+  padding-left: 44px;
   background-color: transparent;
   border: none;
   text-decoration: none;
@@ -351,17 +463,124 @@ form {
 }
 
 .btnPrimary.active {
-  background-color: rgba(141, 127, 199, 1);
+  background-color: var(--violet2);
   border-radius: 0 30px 30px 0;
-  margin-left: 0;
+  padding-left: 44px;
 }
 
 .btnPrimary.active .nav-link {
   color: white;
 }
 
-.content-container {
-  margin-left: 236px;
-  padding: 20px;
-  width: calc(100% - 236px);
+
+/* SCROLL BALANCE */
+
+.largeBlock {
+  display: flex;
+  width: 344px;
+  height: 372px;
+  border: solid 1px var(--lily);
+  border-radius: 30px;
+}
+
+.balance-scroll-container {
+  width: 344px;
+  height: 372px;
+  border: solid 1px var(--lily);
+  border-radius: 30px;
+  padding: 20px 4px 20px 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.balance-header-font {
+  font-family: Circe Rounded;
+  font-size: 24px !important;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+}
+
+.list-scroll-container {
+  display: flex;
+  width: 100%;
+  position: relative;
+  flex-grow: 1;
+}
+
+.balance-scroll-list {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  padding-left: 0;
+  margin-left: 0;
+  height: 182px;
+  overflow-y: auto;
+  width: 100%;
+  scrollbar-width: none;
+}
+
+
+
+.balance-scroll-list::-webkit-scrollbar {
+  display: none;
+}
+
+.li-balance {
+  font-family: Circe Rounded;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: left;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--light-violet);
+  padding: 10px 0;
+}
+
+.balanceCount {
+  height: 30px;
+  width: 30px;
+  background-color: var(--light-violet);
+  color: var(--deep-blue);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.balance-scroll {
+  position: relative;
+  top: 0px;
+  right: 0px;
+  width: 4px;
+  margin-left: 20px;
+  margin-bottom: 44px;
+  background-color: transparent;
+}
+
+.balance-scroll-thumb-img {
+  position: relative;
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+  transition: top 0.3s;
+}
+
+.btnBalance {
+  width: 100%;
+  height: 40px;
+  border-radius: 30px;
+  background-color: var(--violet);
+  border: none;
+  color: var(--deep-blue);
+  font-size: 16px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
 }
