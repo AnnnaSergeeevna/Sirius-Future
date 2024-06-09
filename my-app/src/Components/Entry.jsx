@@ -5,6 +5,7 @@ import CountdownBlock from './CountdownBlock';
 import HomeTasks from './HomeTasks.png'
 import report from './report.png'
 import BalanceScrollComponent from './BalanceScrollComponent';
+import Schedule from './Schedule';
 const Entry = () => {
     return (
         <div>
@@ -23,7 +24,7 @@ const Entry = () => {
                 <div className="bottomRow">
                     <div className="largeBlock"><BalanceScrollComponent />
                     </div>
-                    <div className="extraLargeBlock"></div>
+                    <div className="extraLargeBlock"><Schedule /></div>
                 </div>
             </div>
         </div>
