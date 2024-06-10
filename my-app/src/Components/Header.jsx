@@ -3,34 +3,47 @@ import { Dropdown } from 'react-bootstrap';
 import avaA from './avatar.png';
 import avaM from './avatar (1).png';
 import exit from './exit.png';
+import close from './G2r4oup.png';
 import path from './Path.png';
 import messageL from './Group.png';
 import messageS from './GroupS.png';
 
 const Header = () => {
     const [user, setUser] = useState('Михаил');
-    const users = ['Михаил', 'Анна'];
+    const [menuOpen, setMenuOpen] = useState(false);
+    const users = [
+        { name: 'Михаил', messageCount: 2 },
+        { name: 'Анна', messageCount: 7 }
+    ];
 
     const handleUserChange = (newUser) => {
-        setUser(newUser);
+        setUser(newUser.name);
     };
 
     const avatars = {
         'Михаил': avaM,
         'Анна': avaA
     };
+    const currentUser = users.find(u => u.name === user);
+
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
+    };
 
     return (
         <>
-            <h1 className='headerH1'>Добро пожаловать, {user}</h1>
+            <h1 className='headerH1'>Добро пожаловать, <span className='title24'> {user}</span></h1>
             <div className='header-right-part' style={{ display: 'flex', justifyContent: 'flex-end' }}>
                 <div className="message-image-container">
                     <img className="image24" src={messageL} alt="message area" />
                     <img className="image14" src={messageS} alt="message area" />
+                    <span className="badge badge-secondary">
+                        {currentUser.messageCount}
+                    </span>
                 </div>
 
-                <div style={{ marginLeft: '10px' }}> { }
-                    <Dropdown>
+                <div>
+                    <Dropdown show={menuOpen} onToggle={toggleMenu}>
                         <Dropdown.Toggle
                             variant="light"
                             id="dropdown-custom-components"
@@ -44,14 +57,20 @@ const Header = () => {
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu align="right">
-                            <Dropdown.Header className='Regular16'>Смена пользователя</Dropdown.Header>
-                            {users.map((username) => (
+                            <Dropdown.Header className='Regular16'>
+                                <span className="close-icon" onClick={toggleMenu}>
+                                    <img className="close" src={close} alt="close logo" />
+                                </span>Смена пользователя
+                            </Dropdown.Header>
+                            {users.map((userObj) => (
                                 <Dropdown.Item
-                                    key={username}
-                                    className={user === username ? 'active-user' : ''}
-                                    onClick={() => handleUserChange(username)}
+                                    key={userObj.name}
+                                    className={user === userObj.name ? 'active-user' : ''}
+                                    onClick={() => handleUserChange(userObj)}
                                 >
-                                    {username} {user === username && <span>(это вы)</span>}
+                                    <img src={avatars[userObj.name]} alt="User Avatar" className="avatar" style={{ width: '24px', height: '24px', borderRadius: '50%', marginRight: '10px' }} />
+                                    {userObj.name} {user === userObj.name && <span>(это вы)</span>}
+                                    <span style={{ marginLeft: 'auto', paddingLeft: '10px' }}></span>
                                 </Dropdown.Item>
                             ))}
                             <Dropdown.Item onClick={() => window.location.href = '/login'} className='Regular16Blue'>
@@ -66,4 +85,5 @@ const Header = () => {
 };
 
 export default Header;
+
 
