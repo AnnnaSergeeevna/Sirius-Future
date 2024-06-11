@@ -32,7 +32,7 @@ const NavMenu = () => {
                     </li>
                     <li className="nav-item">
                         <button type="button" className={`btnPrimary ${isActive('/schedule') ? 'active' : 'navbtnPrimary'}`}>
-                            <Link to="/schedule" className="nav-link">
+                            <Link to="/calendar" className="nav-link">
                                 <img className="eyeImg" src={schedPic} alt="Schedule pic" />
                                 Расписание
                             </Link>

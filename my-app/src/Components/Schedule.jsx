@@ -53,7 +53,7 @@ const ScheduleContainer = () => {
 
                 <div className="row">
                     <div className="col  text-center">
-                        <button className="btnScheduleBig">Button</button>
+                        <button onClick={() => window.location.href = '/calendar'} className="btnScheduleBig">Button</button>
                     </div>
                 </div>
             </div>

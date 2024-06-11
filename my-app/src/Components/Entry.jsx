@@ -8,26 +8,20 @@ import BalanceScrollComponent from './BalanceScrollComponent';
 import Schedule from './Schedule';
 const Entry = () => {
     return (
-        <div>
-            <div className="mainContainer">
-                <div className="headerContainer">
-                    <Header />
-                </div>
-                <div className="topRow">
-                    <CarouselComponent />
-                    <CountdownBlock />
-                    <div className="smallBlock">
-                        <img className="homeTasks" src={HomeTasks} alt="Home Tasks" />
-                        <img className="report" src={report} alt="report img" />
-                    </div>
-                </div>
-                <div className="bottomRow">
-                    <div className="largeBlock"><BalanceScrollComponent />
-                    </div>
-                    <div className="extraLargeBlock"><Schedule /></div>
+        <>
+            <div className="topRow">
+                <CarouselComponent />
+                <CountdownBlock />
+                <div className="smallBlock">
+                    <img className="homeTasks" src={HomeTasks} alt="Home Tasks" />
+                    <img className="report" src={report} alt="report img" />
                 </div>
             </div>
-        </div>
+            <div className="bottomRow">
+                <div className="largeBlock"><BalanceScrollComponent />
+                </div>
+                <div className="extraLargeBlock"><Schedule /></div>
+            </div></>
     );
 };
 
