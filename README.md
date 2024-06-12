@@ -5,11 +5,15 @@ The application consists of three forms:
 2. Home page with a banner and drop-down list of users
 3. Lesson Calendar form
    ![Screenshot 2024-06-12 at 10 27 37](https://github.com/AnnnaSergeeevna/Sirius-Future/assets/107751835/473000cb-b1ac-47a6-990c-816d34da6f9d)
+
 <img width="1440" alt="Screenshot 2024-06-12 at 11 15 07" src="https://github.com/AnnnaSergeeevna/Sirius-Future/assets/107751835/0ef017cb-1b19-4256-951a-a8b398f53e8d">
-![Screenshot 2024-06-12 at 10 26 28](https://github.com/AnnnaSergeeevna/Sirius-Future/assets/107751835/482ffd5f-7309-41ec-a569-fd828cf7ca96)
+
+![Screenshot 2024-06-12 at 10 26](https://github.com/AnnnaSergeeevna/Sirius-Future/assets/107751835/a5c9b986-3b13-4cca-88c2-17ddf8f42de6)
 
 
-https://github.com/AnnnaSergeeevna/Sirius-Future/assets/107751835/323c8f16-5e8d-4a4d-9441-13559fdf1560
+
+https://github.com/AnnnaSergeeevna/Sirius-Future/assets/107751835/c51930a5-82b6-4496-8ab0-237118e5b890
+
 
 
 
