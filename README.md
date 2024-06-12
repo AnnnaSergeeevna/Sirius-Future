@@ -1,4 +1,3 @@
-Test task for frontend developer.
 WEB-application Lesson Calendar
 
 The application consists of three forms:
