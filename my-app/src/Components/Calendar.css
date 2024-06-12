@@ -124,6 +124,27 @@
     color: white;
 }
 
+.fc,
+.fc-media-screen,
+.fc-direction-ltr,
+.fc-theme-standard {
+    width: 1072px;
+    height: 529px;
+
+
+}
+
+.fc-scrollgrid-section,
+.fc-scrollgrid-section-header {
+    font-size: 1.5em;
+    font-family: Circe Rounded;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 20.25px;
+    text-align: left;
+    color: rgba(121, 116, 127, 1);
+}
+
 .fc .fc-toolbar-title {
     font-size: 1.5em;
 }
@@ -133,10 +154,71 @@
     border: 1px solid #dee2e6;
 }
 
+.fc-daygrid-day-number,
+.fc-daygrid-day-top,
+.fc-col-header-cell,
+.fc-day,
+.fc-day-mon {
+    color: rgba(121, 116, 127, 1) !important;
+}
+
+.fc-toolbar-title,
+.fc-toolbar-chunk {
+    color: rgba(121, 116, 127, 1) !important;
+}
+
 .fc .fc-daygrid-event {
     margin: 0;
     padding: 0;
 }
+
+.subject-header {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    height: 40px;
+    width: 1072px;
+}
+
+.subject-header select {
+    /* appearance: none; */
+    background-color: white !important;
+    border: none;
+    padding: 10px;
+    margin-right: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+}
+
+/* .subject-header select:hover {
+    background-color: rgba(222, 207, 255, 1);
+} */
+
+.subject-header select:focus,
+.subject-header button:focus {
+    outline: none;
+}
+
+.subject-btn {
+    width: 344px;
+    height: 32px;
+    gap: 0px;
+    opacity: 0px;
+    font-family: Circe Rounded;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16.2px;
+    border-radius: 16px;
+    border: none;
+    background-color: var(--violet);
+    margin-left: 4px;
+    text-align: center;
+}
+
+
+
 
 /* LESSON */
 
@@ -151,10 +233,61 @@
     background-color: #d4edda;
 }
 
-.border-red {
-    border: 2px solid #f8d7da;
+.bg-lily {
+    background-color: rgb(249, 226, 222);
+}
+
+.bg-yellow {
+    background-color: rgba(255, 241, 203, 1);
+    ;
+}
+
+.bg-light-blue {
+    background-color: rgb(207, 225, 255);
 }
 
 .bg-purple {
-    background-color: #d1c4e9;
+    background-color: rgba(222, 207, 255, 1);
+}
+
+
+/* MODAL */
+
+.btnScheduleW1,
+.btnScheduleV1 {
+    width: 80px;
+    height: 32px;
+    gap: 0px;
+    opacity: 0px;
+    font-family: Circe Rounded;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16.2px;
+    border-radius: 16px;
+    border: none;
+    margin-left: 4px;
+    text-align: center;
+}
+
+.btnScheduleV1 {
+    background-color: var(--violet2);
+    color: white;
+}
+
+.btnScheduleW1 {
+    background-color: white;
+    border: solid 1px var(--violet2);
+    color: var(--violet2);
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    gap: 10px;
+}
+
+.modal-element {
+    margin: 2px;
+    border: solid 1px var(--lily-gray);
 }

@@ -1,19 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import { format } from 'date-fns';
 import { ru } from 'date-fns/locale';
 import ArrowL from './ArrowL.png';
 import Question from './question.png';
 import Lesson from './Lesson';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './Calendar.css';
 
 const Calendar = () => {
     const [currentDate, setCurrentDate] = useState(new Date());
+    const [selectedSubject, setSelectedSubject] = useState('');
+    const [events, setEvents] = useState([]);
+    const [newEventTitle, setNewEventTitle] = useState('');
+    const [selectedDate, setSelectedDate] = useState(null);
+    const [selectedTime, setSelectedTime] = useState(new Date());
+    const [showModal, setShowModal] = useState(false);
+
+    const lessonOptions = [
+        { value: 'Ментальная арифметика', label: 'Ментальная арифметика' },
+        { value: 'Программирование', label: 'Программирование' },
+        { value: 'Ментальная арифметика-2', label: 'Ментальная арифметика-2' },
+        { value: 'Ментальная арифметика-3', label: 'Ментальная арифметика-3' },
+        { value: 'Ментальная арифметика-4', label: 'Ментальная арифметика-4' },
+    ];
+
+    useEffect(() => {
+        import('bootstrap/dist/js/bootstrap.bundle.min')
+            .then(bootstrap => {
+                window.bootstrap = bootstrap;
+            })
+            .catch(err => console.error('Error loading Bootstrap:', err));
+    }, []);
 
     const handleDateClick = (arg) => {
-        alert(arg.dateStr);
+        setSelectedDate(new Date(arg.dateStr));
+        openModal();
     };
 
     const handleMonthChange = (monthsToAdd) => {
@@ -25,20 +51,80 @@ const Calendar = () => {
     };
 
     const renderEventContent = (eventInfo) => {
-        const day = format(eventInfo.event.start, 'd');
+        const dayOfWeek = eventInfo.event.start.getDay();
         let variant;
-        if (["1", "4", "9", "15", "27", "7", "20", "25"].includes(day)) {
-            variant = 1;
-        } else if (["3", "5", "10", "30"].includes(day)) {
-            variant = 2;
-        } else if (["25"].includes(day)) {
-            variant = 3;
+        switch (dayOfWeek) {
+            case 1: // Понедельник
+                variant = 1;
+                break;
+            case 2: // Вторник
+                variant = 2;
+                break;
+            case 3: // Среда
+                variant = 3;
+                break;
+            case 4: // Четверг
+                variant = 4;
+                break;
+            case 5: // Пятница
+                variant = 5;
+                break;
+            default:
+                variant = null;
         }
         return variant ? <Lesson variant={variant} /> : null;
     };
 
+
+    const handleSubjectChange = (event) => {
+        setSelectedSubject(event.target.value);
+    };
+
+    const handleScheduleChange = () => {
+        alert(`Изменить расписание для: ${selectedSubject}`);
+    };
+
+    const closeModal = () => {
+        const modalElement = document.getElementById('exampleModal');
+        const modalInstance = window.bootstrap.Modal.getInstance(modalElement);
+        modalInstance.hide();
+        setNewEventTitle('');
+    };
+
+    const handleAddEvent = () => {
+        if (selectedDate && selectedTime && selectedSubject) {
+            const eventStart = new Date(selectedDate);
+            eventStart.setHours(selectedTime.getHours());
+            eventStart.setMinutes(selectedTime.getMinutes());
+
+            const newEvent = {
+                title: `${newEventTitle} - ${selectedSubject}`,
+                start: eventStart,
+            };
+            setEvents([...events, newEvent]);
+            closeModal();
+        } else {
+            alert('Пожалуйста, заполните все поля');
+        }
+    };
+
+    const openModal = () => {
+        const modalElement = document.getElementById('exampleModal');
+        const modalInstance = new window.bootstrap.Modal(modalElement);
+        modalInstance.show();
+    };
+
     return (
         <>
+            <div className='subject-header'>
+                <select value={selectedSubject} onChange={handleSubjectChange}>
+                    <option value="">Выбрать предмет</option>
+                    {lessonOptions.map(option => (
+                        <option key={option.value} value={option.value}>{option.label}</option>
+                    ))}
+                </select>
+                <button className='subject-btn' onClick={handleScheduleChange}>Изменить расписание</button>
+            </div>
             <div className='calendar-header'>
                 <div className='arrow-header'>
                     <button className='arrow' onClick={() => handleMonthChange(-1)}>
@@ -55,20 +141,70 @@ const Calendar = () => {
                 </div>
             </div>
             <FullCalendar
-                key={currentDate} // Force re-render when currentDate changes
+                key={currentDate}
                 plugins={[dayGridPlugin, interactionPlugin]}
                 initialView="dayGridMonth"
                 locale='ru'
-                events={[]}
+                events={events}
                 dateClick={handleDateClick}
                 headerToolbar={false}
                 contentHeight="auto"
                 eventContent={renderEventContent}
                 initialDate={currentDate}
+                firstDay={1}
             />
+
+            <div className="modal" id="exampleModal" tabIndex="-1">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title">Добавить новое занятие</h5>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={closeModal}></button>
+                        </div>
+                        <div className="modal-body">
+                            {/* <input
+                                type="text"
+                                placeholder="Название события"
+                                value={newEventTitle}
+                                onChange={(e) => setNewEventTitle(e.target.value)}
+                                className="modal-element"
+                            /> */}
+                            <select className="modal-element" value={selectedSubject} onChange={handleSubjectChange}>
+                                <option value="">Выбрать предмет</option>
+                                {lessonOptions.map(option => (
+                                    <option key={option.value} value={option.value}>{option.label}</option>
+                                ))}
+                            </select>
+                            <DatePicker
+                                className="modal-element"
+                                selected={selectedDate}
+                                onChange={(date) => setSelectedDate(date)}
+                                dateFormat="dd/MM/yyyy"
+                                locale={ru}
+                            />
+                            <DatePicker
+                                className="modal-element"
+                                selected={selectedTime}
+                                onChange={(time) => setSelectedTime(time)}
+                                showTimeSelect
+                                showTimeSelectOnly
+                                timeIntervals={15}
+                                timeCaption="Время"
+                                dateFormat="HH:mm"
+                                locale={ru}
+                            />
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btnScheduleV1" onClick={handleAddEvent}>Добавить</button>
+                            <button type="button" className="btnScheduleW1" data-bs-dismiss="modal" onClick={closeModal}>Отмена</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </>
     );
 };
 
 export default Calendar;
+
 
