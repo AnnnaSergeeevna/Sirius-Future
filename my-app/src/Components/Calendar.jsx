@@ -14,20 +14,12 @@ import './Calendar.css';
 
 const Calendar = () => {
     const [currentDate, setCurrentDate] = useState(new Date());
-    const [selectedSubject, setSelectedSubject] = useState('');
+    const [selectedSubject, setSelectedSubject] = useState('Выбрать предмет');
     const [events, setEvents] = useState([]);
     const [newEventTitle, setNewEventTitle] = useState('');
     const [selectedDate, setSelectedDate] = useState(null);
     const [selectedTime, setSelectedTime] = useState(new Date());
     const [showModal, setShowModal] = useState(false);
-
-    const lessonOptions = [
-        { value: 'Ментальная арифметика', label: 'Ментальная арифметика' },
-        { value: 'Программирование', label: 'Программирование' },
-        { value: 'Ментальная арифметика-2', label: 'Ментальная арифметика-2' },
-        { value: 'Ментальная арифметика-3', label: 'Ментальная арифметика-3' },
-        { value: 'Ментальная арифметика-4', label: 'Ментальная арифметика-4' },
-    ];
 
     useEffect(() => {
         import('bootstrap/dist/js/bootstrap.bundle.min')
@@ -75,7 +67,6 @@ const Calendar = () => {
         return variant ? <Lesson variant={variant} /> : null;
     };
 
-
     const handleSubjectChange = (event) => {
         setSelectedSubject(event.target.value);
     };
@@ -87,25 +78,19 @@ const Calendar = () => {
     const closeModal = () => {
         const modalElement = document.getElementById('exampleModal');
         const modalInstance = window.bootstrap.Modal.getInstance(modalElement);
-        modalInstance.hide();
+        if (modalInstance) {
+            modalInstance.hide();
+        }
         setNewEventTitle('');
     };
 
     const handleAddEvent = () => {
-        if (selectedDate && selectedTime && selectedSubject) {
-            const eventStart = new Date(selectedDate);
-            eventStart.setHours(selectedTime.getHours());
-            eventStart.setMinutes(selectedTime.getMinutes());
-
-            const newEvent = {
-                title: `${newEventTitle} - ${selectedSubject}`,
-                start: eventStart,
-            };
-            setEvents([...events, newEvent]);
-            closeModal();
-        } else {
-            alert('Пожалуйста, заполните все поля');
-        }
+        const newEvent = {
+            title: `${newEventTitle} - ${selectedSubject}`,
+            start: new Date(selectedDate.setHours(selectedTime.getHours(), selectedTime.getMinutes())),
+        };
+        setEvents([...events, newEvent]);
+        closeModal();
     };
 
     const openModal = () => {
@@ -118,10 +103,9 @@ const Calendar = () => {
         <>
             <div className='subject-header'>
                 <select value={selectedSubject} onChange={handleSubjectChange}>
-                    <option value="">Выбрать предмет</option>
-                    {lessonOptions.map(option => (
-                        <option key={option.value} value={option.value}>{option.label}</option>
-                    ))}
+                    <option value="Выбрать предмет">Выбрать предмет</option>
+                    <option value="Ментальная арифметика">Ментальная арифметика</option>
+                    <option value="Программирование">Программирование</option>
                 </select>
                 <button className='subject-btn' onClick={handleScheduleChange}>Изменить расписание</button>
             </div>
@@ -162,19 +146,13 @@ const Calendar = () => {
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={closeModal}></button>
                         </div>
                         <div className="modal-body">
-                            {/* <input
+                            <input
                                 type="text"
                                 placeholder="Название события"
                                 value={newEventTitle}
                                 onChange={(e) => setNewEventTitle(e.target.value)}
                                 className="modal-element"
-                            /> */}
-                            <select className="modal-element" value={selectedSubject} onChange={handleSubjectChange}>
-                                <option value="">Выбрать предмет</option>
-                                {lessonOptions.map(option => (
-                                    <option key={option.value} value={option.value}>{option.label}</option>
-                                ))}
-                            </select>
+                            />
                             <DatePicker
                                 className="modal-element"
                                 selected={selectedDate}
@@ -195,8 +173,8 @@ const Calendar = () => {
                             />
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btnScheduleV1" onClick={handleAddEvent}>Добавить</button>
-                            <button type="button" className="btnScheduleW1" data-bs-dismiss="modal" onClick={closeModal}>Отмена</button>
+                            <button type="button" className="btn btn-primary" onClick={handleAddEvent}>Добавить</button>
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={closeModal}>Отмена</button>
                         </div>
                     </div>
                 </div>
@@ -206,5 +184,6 @@ const Calendar = () => {
 };
 
 export default Calendar;
+
 
 
