@@ -19,7 +19,7 @@ const Calendar = () => {
     const [newEventTitle, setNewEventTitle] = useState('');
     const [selectedDate, setSelectedDate] = useState(null);
     const [selectedTime, setSelectedTime] = useState(new Date());
-    const [showModal, setShowModal] = useState(false);
+    // const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
         import('bootstrap/dist/js/bootstrap.bundle.min')

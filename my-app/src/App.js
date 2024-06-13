@@ -7,7 +7,6 @@ import NavMenu from './Components/NavMenu'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Registration from './Components/Registration';
 import Calendar from './Components/Calendar';
-import Style from './App.css';
 
 
 const App = () => {

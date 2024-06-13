@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from './Header';
 import CarouselComponent from './Carousel';
 import CountdownBlock from './CountdownBlock';
 import HomeTasks from './HomeTasks.png'
