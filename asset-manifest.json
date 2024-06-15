@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Sirius-Future/static/css/main.835c382a.css",
-    "main.js": "/Sirius-Future/static/js/main.249c567a.js",
+    "main.js": "/Sirius-Future/static/js/main.cefc71a6.js",
     "static/js/885.5ccb9c04.chunk.js": "/Sirius-Future/static/js/885.5ccb9c04.chunk.js",
     "static/media/CirceRounded-Light.otf": "/Sirius-Future/static/media/CirceRounded-Light.bee4cf44694a05bdd393.otf",
     "static/media/CirceRounded-Bold.otf": "/Sirius-Future/static/media/CirceRounded-Bold.63f1293bc8249ff6b698.otf",
@@ -15,11 +15,11 @@
     "static/media/Referral.png": "/Sirius-Future/static/media/Referral.50daaf7648aeaa6b7f59.png",
     "index.html": "/Sirius-Future/index.html",
     "main.835c382a.css.map": "/Sirius-Future/static/css/main.835c382a.css.map",
-    "main.249c567a.js.map": "/Sirius-Future/static/js/main.249c567a.js.map",
+    "main.cefc71a6.js.map": "/Sirius-Future/static/js/main.cefc71a6.js.map",
     "885.5ccb9c04.chunk.js.map": "/Sirius-Future/static/js/885.5ccb9c04.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.835c382a.css",
-    "static/js/main.249c567a.js"
+    "static/js/main.cefc71a6.js"
   ]
 }
