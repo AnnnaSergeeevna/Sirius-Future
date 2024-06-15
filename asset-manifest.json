@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/Sirius-Future/static/css/main.835c382a.css",
+    "main.js": "/Sirius-Future/static/js/main.249c567a.js",
+    "static/js/885.5ccb9c04.chunk.js": "/Sirius-Future/static/js/885.5ccb9c04.chunk.js",
+    "static/media/CirceRounded-Light.otf": "/Sirius-Future/static/media/CirceRounded-Light.bee4cf44694a05bdd393.otf",
+    "static/media/CirceRounded-Bold.otf": "/Sirius-Future/static/media/CirceRounded-Bold.63f1293bc8249ff6b698.otf",
+    "static/media/CirceRounded-Regular.otf": "/Sirius-Future/static/media/CirceRounded-Regular.401e2caac8a3ab1649df.otf",
+    "static/media/CirceRounded-ExtraLight.otf": "/Sirius-Future/static/media/CirceRounded-ExtraLight.c0f36890d2cbfb365edd.otf",
+    "static/media/CirceRounded-Alt-Bold.otf": "/Sirius-Future/static/media/CirceRounded-Alt-Bold.b138e3f8432bfc20faad.otf",
+    "static/media/CirceRounded-ExtraBold.otf": "/Sirius-Future/static/media/CirceRounded-ExtraBold.6a3cc715559f9889975d.otf",
+    "static/media/CirceRounded-Alt-ExtraBold.otf": "/Sirius-Future/static/media/CirceRounded-Alt-ExtraBold.da69134cebd0bf4455ff.otf",
+    "static/media/CirceRounded-Thin.otf": "/Sirius-Future/static/media/CirceRounded-Thin.4754039ca3ec37ccb83f.otf",
+    "static/media/Ad banner.png": "/Sirius-Future/static/media/Ad banner.df23b6fb4fa4c1a9db3e.png",
+    "static/media/Referral.png": "/Sirius-Future/static/media/Referral.50daaf7648aeaa6b7f59.png",
+    "index.html": "/Sirius-Future/index.html",
+    "main.835c382a.css.map": "/Sirius-Future/static/css/main.835c382a.css.map",
+    "main.249c567a.js.map": "/Sirius-Future/static/js/main.249c567a.js.map",
+    "885.5ccb9c04.chunk.js.map": "/Sirius-Future/static/js/885.5ccb9c04.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.835c382a.css",
+    "static/js/main.249c567a.js"
+  ]
+}
